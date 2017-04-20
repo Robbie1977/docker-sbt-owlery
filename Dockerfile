@@ -1,10 +1,8 @@
-FROM 1science/sbt
+FROM usuresearch/scala-sbt-extra:docker-client
 
 MAINTAINER Robbie - Virtual Fly Brain <rcourt@ed.ac.uk>
 
 ENV SBT_VERSION=0.13.9
-
-RUN apk update && apk add git
 
 RUN mkdir -p /opt/VFB && \
 cd /opt/VFB/ && \
