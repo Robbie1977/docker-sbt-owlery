@@ -15,6 +15,7 @@ script:
   - export REPO=$(echo ${TRAVIS_REPO_SLUG} | awk '{gsub(/\./,"_",$0);print tolower($0)}')
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - sed -i "s|http://www.virtualflybrain.org/owl/vfb.owl|${OWLURL}|g" Dockerfile
+  - sed -i "s|\$\{OWLURL\}|${OWLURL}|g"
   - sed -i "s|http://www.virtualflybrain.org/owl/vfb.owl|/srv/vfb.owl|g" application.conf
   - echo -e "travis_fold:end:Geppetto-Config"
   - docker build -f Dockerfile -t $REPO:$VFBSUB . 
